@@ -1,0 +1,4 @@
+###First Commit
+1. There isn't a database in this repository and we are still using sqlite3 so run 'python manage.py syncdb' to create the database
+
+2. Once that is created you should be able to run it with the runserver command
