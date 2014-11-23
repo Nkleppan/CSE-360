@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h1>Welcome Back, {{ username }}</h1>
+
+
+<img src="/home/patrick/DjangoENV/tickets/src/media/profilePics/default.png" style="width:128px;height:128px">
+
+{% if events %}
+    <ul>
+    {% for event in events %}
+        <p>{{ event.title }}</p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tickets are available.</p>
+{% endif %}
+
+<p><a href="/logout/">logout</a></p>
+</body>
+</html>
