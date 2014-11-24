@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'image_space_app',
     'lettuce.django',
     'signups',
+    'treemenus'
 )
 
 MIDDLEWARE_CLASSES = (

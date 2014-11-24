@@ -5,7 +5,8 @@
     <title></title>
 </head>
 <body>
-
+{% load tree_menu_tags %}
+{% show_menu "MyMenu" "unordered-list" %}
 <h1>Welcome Back, {{ user.username }}</h1>
 
 {% load staticfiles %}
