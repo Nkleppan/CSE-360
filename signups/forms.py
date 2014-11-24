@@ -21,4 +21,8 @@ class SignUpForm(UserCreationForm):
         if commit:
             user.save()
 
-        return user    
+        return user
+    
+    
+class SettingsForm(forms.Form):
+    image = forms.ImageField(required=True)

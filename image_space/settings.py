@@ -86,8 +86,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+
 #Media is saved here
-MEDIA_ROOT= '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
 
 #Template location
@@ -96,3 +98,4 @@ TEMPLATE_DIRS = (
 )
 
 AUTH_PROFILE_MODULE = 'signups.SignUp'
+SESSION_KEY = 'current_user_id'

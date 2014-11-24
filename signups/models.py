@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.conf import settings
 
 # Create your models here.
 
@@ -24,3 +25,12 @@ class Event(models.Model):
     
     def __unicode__(self):
         return self.title
+    
+    
+class Setting(models.Model):
+    user = models.ForeignKey(User, null=False, blank=False, related_name='settings')
+    profile_pic = models.ImageField(upload_to='/profilePics', null=False)
+
+
+    def __unicode__(self):
+        return "{0} {1}".format(self.user, self.profile_pic)

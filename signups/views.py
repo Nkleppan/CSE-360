@@ -1,12 +1,14 @@
 from django.shortcuts import render, render_to_response, RequestContext
-from .forms import SignUpForm
+from .forms import SignUpForm, SettingsForm
 from django.contrib import auth
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.context_processors import csrf
-from .models import SignUp, Event
+from .models import SignUp, Event, Setting
 from django.contrib.auth.forms import UserCreationForm
+from django.conf import settings
+from django.contrib.auth.models import User
 
-
+SESSION_KEY = settings.SESSION_KEY
 # Create your views here.
 def newUser(request):
     args = {}
@@ -41,6 +43,7 @@ def auth_view(request):
     
     if user.is_authenticated():
         auth.login(request, user)
+        request.session[SESSION_KEY] = user.id
         return render_to_response('ticket_lists.html', args, context_instance=RequestContext(request))
     else:
         return HttpResponse("<html><body>Invalid</body></html>")
@@ -65,9 +68,37 @@ def ticket_list(request):
 
     return render_to_response('ticket_list.html',context_instance=RequestContext(request))
 
+def settings(request):
+    if check_login(request) == False:
+        redirect('/')
+    current_user = User.objects.get(id=request.session[SESSION_KEY])
+    settings_form = SettingsForm()
+    
+    if request.method == 'POST':
+        settings_form = SettingsForm(request.POST, request.FILES)
+        if settings_form.is_valid():
+            settings = Setting.objects.get_or_create(user=current_user)[0]
+            settings.profile_pic = settings_form.cleaned_data['image']
+            settings.save()
+
+    user_settings = current_user.settings.all()
+    user_settings = user_settings[:1].get() if user_settings.exists() else None
+
+    return render(request, 'settings.html', { 'user': current_user,
+                                             'form': settings_form,
+                                             'settings' : user_settings})
+
+
 def invalid(request):
     return render_to_response('invalid.html')
 
 def logout(request):
     auth.logout(request)
     return render_to_response('logout.html')
+
+def check_login(request):
+    return SESSION_KEY in request.session
+
+def remove_session(request):
+    if SESSION_KEY in request.session:
+        del request.session[SESSION_KEY]

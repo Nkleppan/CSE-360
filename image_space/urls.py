@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^user_created_success', 'signups.views.user_created_success_view'),
     
     url(r'^ticket_list', 'signups.views.ticket_list', name='ticket_list'),
+    url(r'^settings', 'signups.views.settings', name='settings'),
     url(r'^invalid', 'signups.views.invalid', name='invalid'),
     url(r'^logout', 'signups.views.logout', name='logout'),
     #url(r'^register','signups.views.newUser', name='newUser'),
