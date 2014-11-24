@@ -3,3 +3,4 @@ cssselect==0.9.1
 django==1.7
 lxml
 django-treemenus
+coverage
