@@ -39,9 +39,9 @@ def auth_view(request):
     events = Event.objects.all()
     args['events'] = events
     
-    if user is not None:
+    if user.is_authenticated():
         auth.login(request, user)
-        return render_to_response('ticket_lists.html', args)
+        return render_to_response('ticket_lists.html', args, context_instance=RequestContext(request))
     else:
         return HttpResponse("<html><body>Invalid</body></html>")
     

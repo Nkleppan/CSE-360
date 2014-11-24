@@ -6,20 +6,30 @@
 </head>
 <body>
 
-<h1>Welcome Back, {{ username }}</h1>
+<h1>Welcome Back, {{ user.username }}</h1>
 
 {% load staticfiles %}
-<img src="{% static "img/default.png" %}" alt="default"/>
+<p>
+<img src="{% static "img/default.png" %}" alt="default" style="width:64px;height:64px;float:left"/>
+<ul style="list-style-type:none">
+ <li>{{ user.username }}</li>
+ <li>{{ user.email }}</li>
+ </ul>
+</p>
 
+<br>
+    
+<p>
 {% if events %}
     <ul>
     {% for event in events %}
-        <p>{{ event.title }}</p>
+        {{ event.title }}
     {% endfor %}
     </ul>
 {% else %}
     <p>No tickets are available.</p>
 {% endif %}
+</p>
 
 <p><a href="/logout/">logout</a></p>
 </body>
