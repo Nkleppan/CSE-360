@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'image_space_app',
@@ -99,3 +100,6 @@ TEMPLATE_DIRS = (
 
 AUTH_PROFILE_MODULE = 'signups.SignUp'
 SESSION_KEY = 'current_user_id'
+
+TEST_RUNNER='django_nose.NoseTestSuiteRunner'
+LETTUCE_SERVER_PORT=9000
