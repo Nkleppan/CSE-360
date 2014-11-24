@@ -5,6 +5,7 @@
     <title></title>
 </head>
 <body>
+
 {% load tree_menu_tags %}
 {% show_menu "MyMenu" "unordered-list" %}
 <h1>Welcome Back, {{ user.username }}</h1>
@@ -19,19 +20,29 @@
 </p>
 
 <br>
+
+<label style="float:right;padding-right: 250px">What's Happening This Week?</label>
+
+<br>
+
+<div id = "whatsnew" style="overflow-y: scroll;
+float:right; height:500px; width=300px; PADDING-RIGHT:250px">
     
 <p>
 {% if events %}
     <ul>
     {% for event in events %}
-        {{ event.title }}
+        <b>{{ event.title }}</b> <br> {{event.type}} <br> {{event.venue}} <br> <a href="/home/">Order Now</a> <br> <br>
     {% endfor %}
     </ul>
 {% else %}
     <p>No tickets are available.</p>
 {% endif %}
 </p>
+</div>
 
-<p><a href="/logout/">logout</a></p>
+<br>
+    
+<div style="position: absolute;bottom: 0px"><a href="/logout/">logout</a></div>
 </body>
 </html>
