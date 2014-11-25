@@ -1,6 +1,8 @@
 CSE-360
 =======
-Operating System:
+Readme:
+
+    Operating System:
     This document assumes you are operating on a clean install of Ubuntu Server 14.04 LTS, and has not been tested on any other versions or distributions.  The software may function, but deviations from the instructions below will likely be required and functionality cannot be guaranteed.  Complete the base install of the OS.  No special selections are required at this stage.
 
     Packages:
@@ -22,10 +24,9 @@ Now that our dependencies are in order, we sync the database to prepare the serv
 
 Note:  In order for the site navigation menu as well as event listings to be populated, they must be configured from the Django admin webpage.
     Admin Page Configuration:
-
+        Please refer to the demo video for the usage of the Administration Page.
     Browser Navigation:
-        If an audio-visual explanation of these instructions is preferred, please go to http://youtu.be/y25mUueq22k.  The same steps will be covered below in a written format.
-    Open the browser of your choice, and enter the IP Address of the server, followed by a colon, followed by the port number into the address bar.  In the example covered by this document, you would enter the following.
+        Open the browser of your choice, and enter the IP Address of the server, followed by a colon, followed by the port number into the address bar.  In the example covered by this document, you would enter the following.
 
 127.0.0.1:8000
 
@@ -37,6 +38,12 @@ If all fields have been populated correctly, the user will be created and you ma
 
 Once the user has reached the homepage, a listing of available tickets is shown.  Once the user has finished their business, they may log out or simply close the browser.
 
-    Unit Testing:
+    
 
-    Functional Testing:
+
+
+Testing:
+        The tests (both unit and functional) are run with the following command.  The functional tests are done with Selenium.  Once the tests are run, we use Coverage to see how well the tests cover the codebase.
+# python manage.py test
+# coverage --source=”.” manage.py test
+# coverage report
