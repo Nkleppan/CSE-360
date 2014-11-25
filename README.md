@@ -43,7 +43,7 @@ Once the user has reached the homepage, a listing of available tickets is shown.
 
 
 Testing:
-        The tests (both unit and functional) are run with the following command.  The functional tests are done with Selenium.  Once the tests are run, we use Coverage to see how well the tests cover the codebase.
+        The tests (both unit and functional) are run with the following command.  The functional tests are done with Selenium.  Once the tests are run, we use Coverage to see how well the tests cover the codebase.  The tests themselves are located under image_space_app/tests/tests.py.
 # python manage.py test
 # coverage --source=”.” manage.py test
 # coverage report
