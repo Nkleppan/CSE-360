@@ -19,7 +19,7 @@ def setup_database(real_server):
   logger.info("Setting up test database.")
   
   world.test_runner=DjangoTestSuiteRunner(interactive=False)
-  djangoTestSuiteRunner.setup_test_environment(world.test_runner)'
+  djangoTestSuiteRunner.setup_test_environment(world.test_runner)
   world.created_db=DjangoTestSuiteRunner.setup_databases(world.test_runner)
   
   call_command('syncdb', interactive=False, verbosity=0)

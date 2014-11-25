@@ -103,3 +103,4 @@ SESSION_KEY = 'current_user_id'
 
 TEST_RUNNER='django_nose.NoseTestSuiteRunner'
 LETTUCE_SERVER_PORT=9000
+SITE_ID=1

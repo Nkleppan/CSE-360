@@ -7,7 +7,9 @@
 <body>
 
 {% load tree_menu_tags %}
-{% show_menu "MyMenu" "unordered-list" %}
+{% if MyMenu %}
+<meh>{% show_menu "MyMenu" "unordered-list" %}</meh>
+{% endif %}
 <h1>Welcome Back, {{ user.username }}</h1>
 
 {% load staticfiles %}
