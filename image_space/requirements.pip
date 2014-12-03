@@ -7,3 +7,4 @@ coverage
 lettuce
 selenium
 django-nose
+pillow
